@@ -4,7 +4,7 @@
 
 ## Integrantes
 - 
-- 
+- Albert Loayza
 - 
 
 ----

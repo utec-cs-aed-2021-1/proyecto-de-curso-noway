@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "Tester/tester.h"
-#include "Parser/parser.h"
+//#include "Parser/parser.h"
 
 using namespace std;
 
@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
     std::cout << "================================================" << std::endl;
     
     Tester::executeExamples();
-    Tester::executeParser();
+    //Tester::executeParser();
     
     return EXIT_SUCCESS;
 }
