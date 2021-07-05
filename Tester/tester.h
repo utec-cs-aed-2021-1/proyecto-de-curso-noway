@@ -1,8 +1,9 @@
 #ifndef PROYECTO_DE_CURSO_NOWAY_TESTER_H
 #define PROYECTO_DE_CURSO_NOWAY_TESTER_H
 
-#include "DirectedGraph.h"
-#include "UndirectedGraph.h"
+#include "../Graph/DirectedGraph.h"
+#include "../Graph/UndirectedGraph.h"
+#include "../Parser/parser.hpp"
 #include <string>
 #include <iostream>
 
@@ -11,8 +12,8 @@ using namespace std;
 
 struct Tester {
     static void executeExamples();
-    //static void executeParserPeru(string);
-    //static void executeParserMundo(string);
+    static void executeParserPeru();
+    //static void executeParserMundo();
 };
 
 void Tester::executeExamples() {
@@ -93,5 +94,15 @@ void Tester::executeExamples() {
 
     cout << endl;
 }
+
+void Tester::executeParserPeru() {
+    Parser Peru("../Parser/Data/pe.json");
+    Peru.readJSON();
+    UnDirectedGraph<string, double> uGraph;
+
+    Peru.uGraphMake(uGraph);
+    uGraph.display();
+}
+
 
 #endif //PROYECTO_DE_CURSO_NOWAY_TESTER_H
