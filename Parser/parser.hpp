@@ -41,24 +41,11 @@ Parser::Parser(string path_) {
 void Parser::clear() {
     this->path = "";
     this->jsonGraph.clear();
-    /*
-    this->vertexes_ids.clear();
-    this->vertexes_data.clear();
-    this->destinations.clear();
-    this->longitudes.clear();
-    this->latitudes.clear();*/
 }
 
 void Parser::readJSON() {
     ifstream file(this->path);          // se abre el json en modo lectura
-    file >> this->jsonGraph;            // se parsea a un objeto json (nlohmann)
-    /*for (int i = 0; i < jsonGraph.size(); i++) {
-        this->vertexes_ids.push_back(jsonGraph[i]["Airport ID"]);
-        this->vertexes_data.push_back(jsonGraph[i]["IATA/FAA"]);
-        this->destinations.push_back(jsonGraph[i]["destinations"]);
-        this->longitudes.push_back(jsonGraph[i]["Longitude"]);
-        this->latitudes.push_back(jsonGraph[i]["Latitude"]);
-    }*/
+    file >> this->jsonGraph;            // se parsea a un objeto nlohmann::json
 }
 
 void Parser::uGraphMake(UnDirectedGraph<string, double> &tempGraph) {
