@@ -4,8 +4,6 @@
 
 ## Integrantes
 - Eduardo Arróspide González
-- Albert Loayza
-- 
 
 ----
 
