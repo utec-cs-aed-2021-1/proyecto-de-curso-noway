@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <queue>
 #include <algorithm>
+#include <iostream>
 
 using namespace std;
 
@@ -58,6 +59,10 @@ protected:
 
 public:
     virtual bool insertVertex(string id, TV vertex) = 0;
+
+    virtual bool insertVertex(Vertex<TV, TE> vertex) = 0;
+
+    virtual Vertex<TV, TE> getVertex(string id) = 0;
 
     virtual bool createEdge(string id1, string id2, TE w) = 0;
 

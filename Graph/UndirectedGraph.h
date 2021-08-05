@@ -2,15 +2,16 @@
 #define UNDIRECTEDGRAPH_H
 
 #include "graph.h"
+using namespace std;
 
 template<typename TV, typename TE>
 class UnDirectedGraph : public Graph<TV, TE>{
-private:
-    //friend class kruskal<>;
 public:
     UnDirectedGraph();
     ~UnDirectedGraph();
     bool insertVertex(string id, TV vertex) override;
+    bool insertVertex(Vertex<TV, TE> vertex) override;
+    Vertex<TV, TE> getVertex(string id) override;
     bool createEdge(string id1, string id2, TE w) override;
     bool deleteVertex(string id) override;
     bool deleteEdge(string id) override;
@@ -45,6 +46,22 @@ bool UnDirectedGraph<TV, TE>::insertVertex(string id, TV vertex) {
     }
 
     return false;
+}
+
+template<typename TV, typename TE>
+bool UnDirectedGraph<TV, TE>::insertVertex(Vertex<TV, TE> vertex) {
+    if (!findById(vertex->id)) {
+        auto* v = new Vertex<TV, TE>(vertex->data, vertex->id);
+        this->vertexes[vertex->id] = v;
+        return true;
+    }
+
+    return false;
+}
+
+template<typename TV, typename TE>
+Vertex<TV, TE> UnDirectedGraph<TV, TE>::getVertex(string id) {
+    return this->vertexes[id];
 }
 
 template<typename TV, typename TE>
