@@ -1,5 +1,5 @@
-#ifndef PROYECTO_DE_CURSO_NOWAY_TESTER_H
-#define PROYECTO_DE_CURSO_NOWAY_TESTER_H
+#ifndef TESTER_H
+#define TESTER_H
 
 #include "../Graph/DirectedGraph.h"
 #include "../Graph/UndirectedGraph.h"
@@ -116,4 +116,4 @@ void Tester::executeParserInternational() {
 }
 
 
-#endif //PROYECTO_DE_CURSO_NOWAY_TESTER_H
+#endif //TESTER_H

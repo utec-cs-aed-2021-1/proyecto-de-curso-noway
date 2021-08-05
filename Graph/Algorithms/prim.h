@@ -20,7 +20,9 @@ struct Prim : public UnDirectedGraph<TV, TE>{
     string startID;
     UnDirectedGraph<TV, TE>* graph;
 
-    Prim(UnDirectedGraph<TV, TE>* graph_, const string startID_);
+    Prim(const string startID_);
+
+    UnDirectedGraph<TV, TE> apply();
 
 };
 
@@ -30,8 +32,19 @@ Prim<TV, TE>::Prim(UnDirectedGraph<TV, TE>* graph_, const string startID_)
     if (graph_->findById(startID_) == false) throw "The selected vertex is not in the graph";
 
     this->startID = startID_;
+    this->graph = graph_;
+}
 
-    priority_queue<edgeVertex<TV, TE>, vector<edgeVertex<TV, TE>>, weightComp<TV, TE>> queue;
+UnDirectedGraph<TV, TE> Prim<TV, TE>::apply()
+{
+    UnDirectedGraph<TV, TE> mst;
+    priority_queue<edgeVertex<TV, TE>, vector<edgeVertex<TV, TE>>, weightComp<TV, TE>> pqueue;
+    vector<Vertex<TV, TE>> visited;
+
+    mst.insertVertex(graph.getVertex(startID));
+
+    for (auto x: graph->vertexes)
+
 
 }
 
@@ -39,4 +52,4 @@ Prim<TV, TE>::Prim(UnDirectedGraph<TV, TE>* graph_, const string startID_)
 
 
 
-#endif
+#endif // PRIM_H

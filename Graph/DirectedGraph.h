@@ -1,5 +1,5 @@
-#ifndef NONDIRECTEDGRAPH_H
-#define NONDIRECTEDGRAPH_H
+#ifndef DIRECTEDGRAPH_H
+#define DIRECTEDGRAPH_H
 
 #include "graph.h"
 
@@ -221,4 +221,4 @@ void DirectedGraph<TV, TE>::display() {
     }
 }
 
-#endif
+#endif // DIRECTEDGRAPH_H
