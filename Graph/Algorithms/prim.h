@@ -20,7 +20,7 @@ struct Prim : public UnDirectedGraph<TV, TE>{
     string startID;
     UnDirectedGraph<TV, TE>* graph;
 
-    Prim(const string startID_);
+    Prim(UnDirectedGraph<TV, TE>* graph_, const string startID_);
 
     UnDirectedGraph<TV, TE> apply();
 
@@ -35,6 +35,7 @@ Prim<TV, TE>::Prim(UnDirectedGraph<TV, TE>* graph_, const string startID_)
     this->graph = graph_;
 }
 
+template<typename TV, typename TE>
 UnDirectedGraph<TV, TE> Prim<TV, TE>::apply()
 {
     UnDirectedGraph<TV, TE> mst;
@@ -42,8 +43,10 @@ UnDirectedGraph<TV, TE> Prim<TV, TE>::apply()
     vector<Vertex<TV, TE>> visited;
 
     mst.insertVertex(graph.getVertex(startID));
+    for (auto x: graph.getVertex(startID)->edges)
+        pqueue.push(make_pair(x, graph.getVertex(startID)));
 
-    for (auto x: graph->vertexes)
+
 
 
 }
