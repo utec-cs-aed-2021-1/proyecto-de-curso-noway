@@ -13,7 +13,7 @@ using namespace std;
 struct Tester {
     static void executeExamples();
     static void executeParserPeru();
-    //static void executeParserMundo();
+    static void executeParserInternational();
 };
 
 void Tester::executeExamples() {
@@ -96,12 +96,23 @@ void Tester::executeExamples() {
 }
 
 void Tester::executeParserPeru() {
-    Parser Peru("../Parser/Data/pe.json");
+    Parser Peru("Parser/Data/pe.json");
     Peru.readJSON();
     UnDirectedGraph<string, double> uGraph;
 
     Peru.uGraphMake(uGraph);
     uGraph.display();
+}
+
+void Tester::executeParserInternational() {
+    Parser graph("Parser/Data/airports.json");
+    graph.readJSON();
+    DirectedGraph<string, double> dGraph;
+
+    graph.dGraphMake(dGraph);
+    for (int i = 0; i < 10; i++)
+        cout << graph.jsonGraph[i] << endl;
+    dGraph.display();
 }
 
 

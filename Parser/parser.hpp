@@ -1,3 +1,6 @@
+#ifndef PARSER_HPP
+#define PARSER_HPP
+
 #include "nlohmann/json.hpp"
 #include "../Graph/UndirectedGraph.h"
 #include "../Graph/DirectedGraph.h"
@@ -14,20 +17,13 @@ private:
     string path;                // ruta del archivo
     json jsonGraph;             // objeto nlohmann::json que almacena el json
                                 // como estructura primaria
-    /*
-    vector<string> vertexes_ids;
-    vector<TV> vertexes_data;
-    vector<vector<TE>> destinations;
-    vector<string> latitudes;
-    vector<string> longitudes;*/
 public:
-    Parser(string path);
+    Parser(string path_);
 
     void clear(); // Clears parser saved atributes
 
-
     void readJSON(); // Parses JSON file and saves data into class
-// NOTE: each derived class has its own readJSON method
+    // NOTE: each derived class has its own readJSON method
 
     void uGraphMake(UnDirectedGraph<string, double> &tempGraph); // Adds the parsed data into the specified undirected graph
 
@@ -44,8 +40,12 @@ void Parser::clear() {
 }
 
 void Parser::readJSON() {
-    ifstream file(this->path);          // se abre el json en modo lectura
-    file >> this->jsonGraph;            // se parsea a un objeto nlohmann::json
+    ifstream file(this->path, ifstream::in);        // se abre el json en modo lectura
+    string line, jsonString;
+    while (getline(file, line))                     // se lee el json a una std::string
+        jsonString += line + "\n";
+
+    this->jsonGraph = json::parse(jsonString);            // se parsea a un objeto nlohmann::json
 }
 
 void Parser::uGraphMake(UnDirectedGraph<string, double> &tempGraph) {
@@ -59,7 +59,9 @@ void Parser::uGraphMake(UnDirectedGraph<string, double> &tempGraph) {
                                 distance(this->jsonGraph[i]["Latitude"],       // funcion distance como tercer atributo de createEdge
                                         this->jsonGraph[i]["Longitude"],
                                         this->jsonGraph[findByAirportID(this->jsonGraph, this->jsonGraph[i]["destinations"][j])]["Latitude"],
-                                        this->jsonGraph[findByAirportID(this->jsonGraph, this->jsonGraph[i]["destinations"][j])]["Longitude"]));
+                                        this->jsonGraph[findByAirportID(this->jsonGraph, this->jsonGraph[i]["destinations"][j])]["Longitude"]
+                                    )
+                                );
         }
     }
 }
@@ -73,6 +75,7 @@ void Parser::dGraphMake(DirectedGraph<string, double> &tempGraph) {
     for (int i = 0; i < this->jsonGraph.size(); i++)
         tempGraph.insertVertex(this->jsonGraph[i]["Airport ID"], this->jsonGraph[i]["IATA/FAA"]);
 
+    cout << findByAirportID(this->jsonGraph, "3797") << endl;
     for (int i = 0; i < this->jsonGraph.size(); i++) {
         for (int j = 0; j < this->jsonGraph[i]["destinations"].size(); j++) {
             tempGraph.createEdge(this->jsonGraph[i]["Airport ID"],
@@ -84,3 +87,7 @@ void Parser::dGraphMake(DirectedGraph<string, double> &tempGraph) {
         }
     }
 }
+
+
+
+#endif // PARSER_HPP

@@ -1,3 +1,6 @@
+#ifndef HELPER_FUNCTS_HPP
+#define HELPER_FUNCTS_HPP
+
 #include "nlohmann/json.hpp"
 #include <cmath>
 #define pi 3.14159265358979323846
@@ -55,4 +58,9 @@ int findByAirportID(json jsonGraph, string id) {
         if (jsonGraph[i]["Airport ID"] == id)
             return i;
     }
+    return 215;                              // si no existe el destino, se fijará Nueva York como destino
 }
+
+
+
+#endif // HELPER_FUNCTS_HPP
