@@ -356,7 +356,7 @@ void Parser::readJSON() {
 ```
 Los archivos json de los aeropuertos estaban rodeados por corchetes "[]", lo cual complicaba el parseo directo a un objeto nlohmann::json. Luego de muchas pruebas, se descubrió que, si se pasaba el json a un string normal de C++ primero, y luego recién se parseaba a un objeto nlohmann::json, no había problema.
 Si se agrega, al final del método, la siguiente línea de código: ```cout << setw(4) << this->jsonGraph << endl;```, se puede observar en consola una impresión de la data parseada como si estuviese en formato json, de la siguiente manera:
-![ImpresiónJSON](ImpresionJSON.png "ImpresionJSON")
+![ImpresiónJSON](ImpresionJSON.png)
 
 
 Luego, los métodos uGraphMake() y dGraphMake() son iguales, solo que retornan grafos no dirigidos y dirigidos, respectivamente.
@@ -446,4 +446,4 @@ int findByAirportID(json jsonGraph, string id) {
 ```
 La función findByAirportID() permite encontrar el index de un aeropuerto utilizando solo el Airport ID. Se busca conseguir esto pues en los objetos nlohmann::json, se puede utilizar el operador [] para acceder a cada aeropuerto. En esta función, además, para prevenir errores de data en los archivos json, retornará el index 215 (correspondiente al aeropuerto de Nueva York) si es que el Airport ID buscado no existe.
 Se eliminaron manualmente los aeropuertos de AirportID 5562, 5674 y 5675, ya que en las latitudes tenían letras, por lo que se consideró como data corrupta.
-Además, se eliminó el aeropuerto de AirportID 1104, pues su única destination era hacia uno de los aeropuertos previamente mencionados. 
+Además, se eliminó el aeropuerto de AirportID 1104, pues su única destination era hacia uno de los aeropuertos previamente mencionados.
