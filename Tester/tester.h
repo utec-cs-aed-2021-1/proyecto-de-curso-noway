@@ -12,7 +12,7 @@ using namespace std;
 struct Tester {
     static void executeExamples();
     static void executeParserPeru();
-    static void executeParserInternational();
+//    static void executeParserInternational();
 };
 
 void Tester::executeExamples() {
@@ -34,6 +34,7 @@ void Tester::executeExamples() {
     graph1.createEdge("4", "5", 30);
     graph1.createEdge("5", "1", 30);
 
+    cout << graph1("2", "5") << endl;
     graph1.display();
     cout << endl;
     cout << "Density: " << graph1.density() << endl;

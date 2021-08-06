@@ -63,8 +63,6 @@ public:
 
     virtual bool deleteVertex(string id) = 0;
 
-    virtual bool deleteEdge(string id) = 0;
-
     virtual TE &operator()(string start, string end)= 0;
 
     virtual float density() = 0;

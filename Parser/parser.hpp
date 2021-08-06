@@ -47,7 +47,7 @@ void Parser::readJSON() {
     while (getline(file, line))                     // se lee el json a una std::string
         jsonString += line + "\n";
     this->jsonGraph = json::parse(jsonString);            // se parsea a un objeto nlohmann::json
-    cout << setw(4) << this->jsonGraph << endl;
+    cout << setw(4) << this->jsonGraph << endl;         // imprime el json bonito, con formato json
 }
 
 void Parser::uGraphMake(UnDirectedGraph<string, double> &tempGraph) {

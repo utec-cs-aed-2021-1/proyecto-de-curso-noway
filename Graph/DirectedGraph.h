@@ -13,7 +13,6 @@ public:
     bool insertVertex(string id, TV vertex) override;
     bool createEdge(string id1, string id2, TE w) override;
     bool deleteVertex(string id) override;
-    bool deleteEdge(string id) override;
     TE &operator()(string start, string end) override;
     float density() override;
     bool isDense(float threshold = 0.5) override;
@@ -89,22 +88,6 @@ bool DirectedGraph<TV, TE>::deleteVertex(string id) {
     return true;
 }
 
-template<typename TV, typename TE>
-bool DirectedGraph<TV, TE>::deleteEdge(string id) {
-    int edges = 0;
-    for(auto p : this->vertexes)  edges += p.second->edges.size();
-    if (findById(id)) {
-        for (auto i = this->vertexes[id]->edges.begin(); i != this->vertexes[id]->edges.end();) {
-            if ((*i)->vertexes[1] == this->vertexes[id]) {
-                this->vertexes[id]->edges.erase(i++);
-                edges--;
-            }
-            else i++;
-        }
-        return true;
-    }
-    return false;
-}
 
 template<typename TV, typename TE>
 TE &DirectedGraph<TV, TE>::operator()(string start, string end) {
@@ -172,7 +155,6 @@ bool DirectedGraph<TV, TE>::isConnected() {
 
 template <typename TV, typename TE>
 bool DirectedGraph<TV,TE>::isStronglyConnected() throw() {
-    //throw invalid_argument("No aplica para Undirected Graph");
 }
 
 template <typename TV, typename TE>

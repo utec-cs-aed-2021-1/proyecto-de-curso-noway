@@ -12,14 +12,12 @@ using json = nlohmann::json;
 /////////////////////////////////////////////////////////////////////
 /////////////////// Funciones de ayuda /////////////////////////////
 
-
 // para convertir longitudes y latitudes a radianes
 long double toRadians(const long double grados)
 {
     long double grado = (pi) / 180;
     return (grado * grados);
 }
-
 
 //para calcular la distancia entre dos latitudes y longitudes
 
@@ -60,10 +58,5 @@ int findByAirportID(json jsonGraph, string id) {
     }
     return 215;                              // si no existe el destino, se fijará Nueva York como destino
 }
-
-
-
-
-
 
 #endif // HELPER_FUNCTS_HPP
