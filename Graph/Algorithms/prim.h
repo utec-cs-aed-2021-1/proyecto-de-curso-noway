@@ -6,9 +6,16 @@
 
 using namespace std;
 
-//template<typename TV, typename TE>                            //located in helper_functs
-//using edgeVertex = pair<Edge<TV, TE>*, Vertex<TV, TE>*>;    //for convenience
+template<typename TV, typename TE>
+using edgeVertex = pair<Edge<TV, TE>*, Vertex<TV, TE>*>;    //for convenience
 
+template<typename TV, typename TE>
+struct weightComp {
+    bool operator() (edgeVertex<TV, TE> ev1, edgeVertex<TV, TE> ev2)            // struct to be used in priority_queue
+    {
+        return ev1.first->weight > ev2.first->weight;           // built the same way as std::greater
+    }
+};
 
 template<typename TV, typename TE>
 struct Prim : public UnDirectedGraph<TV, TE>{

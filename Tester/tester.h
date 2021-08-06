@@ -7,7 +7,6 @@
 #include <string>
 #include <iostream>
 
-//using namespace rapidjson;
 using namespace std;
 
 struct Tester {
@@ -103,17 +102,15 @@ void Tester::executeParserPeru() {
     Peru.uGraphMake(uGraph);
     uGraph.display();
 }
-
+/*
 void Tester::executeParserInternational() {
     Parser graph("Parser/Data/airports.json");
     graph.readJSON();
     DirectedGraph<string, double> dGraph;
 
     graph.dGraphMake(dGraph);
-    for (int i = 0; i < 10; i++)
-        cout << graph.jsonGraph[i] << endl;
     dGraph.display();
 }
-
+*/
 
 #endif //TESTER_H

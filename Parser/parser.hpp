@@ -4,8 +4,10 @@
 #include "nlohmann/json.hpp"
 #include "../Graph/UndirectedGraph.h"
 #include "../Graph/DirectedGraph.h"
-#include "../helper_functs.hpp"
+#include "helper_functs.hpp"
 #include <fstream>
+#include <iomanip>
+#include <iostream>
 using namespace std;
 
 // for convenience
@@ -44,8 +46,8 @@ void Parser::readJSON() {
     string line, jsonString;
     while (getline(file, line))                     // se lee el json a una std::string
         jsonString += line + "\n";
-
     this->jsonGraph = json::parse(jsonString);            // se parsea a un objeto nlohmann::json
+    cout << setw(4) << this->jsonGraph << endl;
 }
 
 void Parser::uGraphMake(UnDirectedGraph<string, double> &tempGraph) {

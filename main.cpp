@@ -11,8 +11,8 @@ int main(int argc, char *argv[]) {
     std::cout << "================================================" << std::endl;
 
     Tester::executeExamples();
-    //Tester::executeParserPeru();
-    Tester::executeParserInternational();
+    Tester::executeParserPeru();
+    //Tester::executeParserInternational();
 
     return EXIT_SUCCESS;
 }

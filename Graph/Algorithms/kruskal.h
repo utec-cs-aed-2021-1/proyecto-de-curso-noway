@@ -32,6 +32,11 @@ UnDirectedGraph<TV, TE> Kruskal<TV, TE>::apply()
     {
         mst.insertVertex(x.second);
         visited.push_back(x.second);
+
+        for (auto y: x.second->edges)
+        {
+            if
+        }
     }
 }
 
