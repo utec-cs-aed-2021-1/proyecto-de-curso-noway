@@ -289,10 +289,8 @@ bool UnDirectedGraph<TV, TE>::findById(string id) {
 ```
 
 ##### Display
-Finalmente, esta función de display imprimirá el grafo de la siguiente forma:
-<figure align="center" class="image">
-  <img src="Media/Display.png" width="70%" height="60%" style="text-align:center;">
-</figure>
+Finalmente, esta función de display imprimirá el grafo de la siguiente forma: (revisar imagen en carpeta "MEDIA" si no se muestra)
+![Display](Media/Display.png "Display")
 ```cpp
 template<typename TV, typename TE>
 void UnDirectedGraph<TV, TE>::display() {
@@ -357,10 +355,8 @@ void Parser::readJSON() {
 }
 ```
 Los archivos json de los aeropuertos estaban rodeados por corchetes "[]", lo cual complicaba el parseo directo a un objeto nlohmann::json. Luego de muchas pruebas, se descubrió que, si se pasaba el json a un string normal de C++ primero, y luego recién se parseaba a un objeto nlohmann::json, no había problema.
-Si se agrega, al final del método, la siguiente línea de código: ```cout << setw(4) << this->jsonGraph << endl;```, se puede observar en consola una impresión de la data parseada como si estuviese en formato json, de la siguiente manera:
-<figure align="center" class="image">
-  <img src="Media/ImpresionJSON.png" width="70%" height="60%" style="text-align:center;">
-</figure>
+Si se agrega, al final del método, la siguiente línea de código: ```cout << setw(4) << this->jsonGraph << endl;```, se puede observar en consola una impresión de la data parseada como si estuviese en formato json, de la siguiente manera: (revisar imagen en carpeta "MEDIA" si no se muestra)
+![ImpresiónJSON](Media/ImpresionJSON.png "ImpresionJSON")
 
 
 Luego, los métodos uGraphMake() y dGraphMake() son iguales, solo que retornan grafos no dirigidos y dirigidos, respectivamente.
