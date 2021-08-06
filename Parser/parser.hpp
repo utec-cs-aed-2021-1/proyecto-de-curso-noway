@@ -4,7 +4,7 @@
 #include "nlohmann/json.hpp"
 #include "../Graph/UndirectedGraph.h"
 #include "../Graph/DirectedGraph.h"
-#include "helper_functs.hpp"
+#include "../helper_functs.hpp"
 #include <fstream>
 using namespace std;
 

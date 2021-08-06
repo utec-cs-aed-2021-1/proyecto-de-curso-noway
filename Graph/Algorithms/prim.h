@@ -2,18 +2,13 @@
 #define PRIM_H
 
 #include "../UndirectedGraph.h"
+#include "../../helper_functs.hpp"
+
 using namespace std;
 
-template<typename TV, typename TE>
-using edgeVertex = pair<Edge<TV, TE>*, Vertex<TV, TE>*>;    //for convenience
+//template<typename TV, typename TE>                            //located in helper_functs
+//using edgeVertex = pair<Edge<TV, TE>*, Vertex<TV, TE>*>;    //for convenience
 
-template<typename TV, typename TE>
-struct weightComp {
-    bool operator() (edgeVertex<TV, TE> ev1, edgeVertex<TV, TE> ev2)            // struct to be used in priority_queue
-    {
-        return ev1.first->weight > ev2.first->weight;           // built the same way as std::greater
-    }
-};
 
 template<typename TV, typename TE>
 struct Prim : public UnDirectedGraph<TV, TE>{
@@ -46,7 +41,18 @@ UnDirectedGraph<TV, TE> Prim<TV, TE>::apply()
     for (auto x: graph.getVertex(startID)->edges)
         pqueue.push(make_pair(x, graph.getVertex(startID)));
 
+    visited.push_back(graph.getVertex(startID));
 
+    while (!pqueue.empty())
+    {
+        auto* it = find(visited.begin(), visited.end(), pqueue.top().second);
+        while (it != visited.end()) {
+            it = find(visited.begin(), visited.end(), pqueue.top().second);
+            pqueue.pop();
+        }
+        mst.createEdge(pqueue.top().first->vertexes[0], pqueue.top().second, pqueue.top().first->weight);
+        for (auto x: mst)
+    }
 
 
 }
